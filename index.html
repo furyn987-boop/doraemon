@@ -1,1 +1,55 @@
-# doraemon
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>My Shop</title>
+
+    <!-- Telegram Mini App -->
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+</head>
+
+<body>
+
+    <h1>🛍️ My Shop</h1>
+
+    <p id="welcome">Welcome to my shop!</p>
+
+    <button id="shopButton">
+        Shop Now
+    </button>
+
+    <script>
+
+        const tg = window.Telegram.WebApp;
+
+        tg.ready();
+
+        tg.expand();
+
+        const user = tg.initDataUnsafe?.user;
+
+        if (user) {
+            document.getElementById("welcome").textContent =
+                `Hello, ${user.first_name}!`;
+        }
+
+        document
+            .getElementById("shopButton")
+            .addEventListener("click", function () {
+
+                tg.showAlert("Welcome to my shop! 🛍️");
+
+            });
+
+    </script>
+
+</body>
+
+</html>
